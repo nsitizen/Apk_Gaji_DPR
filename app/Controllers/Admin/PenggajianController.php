@@ -52,6 +52,38 @@ class PenggajianController extends BaseController
         return view('admin/penggajian/show', $data);
     }
 
+    // Menampilkan form UBAH penggajian
+    public function edit($id_anggota)
+    {
+        $anggota = $this->anggotaModel->find($id_anggota);
+        $semua_komponen = $this->komponenGajiModel->orderBy('jabatan', 'ASC')->findAll();
+        $komponen_dimiliki = $this->penggajianModel->getKomponenByAnggota($id_anggota);
+        
+        // Buat array dari ID komponen yang dimiliki untuk memudahkan pengecekan di view
+        $ids_komponen_dimiliki = array_column($komponen_dimiliki, 'id_komponen_gaji');
+
+        $data = [
+            'title'                 => 'Form Ubah Penggajian',
+            'anggota'               => $anggota,
+            'semua_komponen'        => $semua_komponen,
+            'ids_komponen_dimiliki' => $ids_komponen_dimiliki
+        ];
+        return view('admin/penggajian/edit', $data);
+    }
+
+    // Memproses form UBAH penggajian
+    public function update($id_anggota)
+    {
+        // Ambil daftar komponen yang dipilih dari form
+        $komponen_ids = $this->request->getPost('komponen_ids') ?? [];
+
+        // Gunakan $id_anggota dari URL, bukan dari form post
+        $this->penggajianModel->deleteByAnggota($id_anggota);
+        $this->penggajianModel->addKomponenToAnggota($id_anggota, $komponen_ids);
+
+        return redirect()->to('/admin/penggajian')->with('success', 'Data penggajian berhasil diubah.');
+    }
+
     // Method private untuk menghitung Take Home Pay berdasarkan semua aturan
     private function calculateTakeHomePay(array $anggota, array $komponen): float
     {
