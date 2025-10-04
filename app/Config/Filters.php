@@ -9,7 +9,6 @@ use CodeIgniter\Filters\DebugToolbar as Toolbar;
 use CodeIgniter\Filters\ForceHTTPS;
 use CodeIgniter\Filters\Honeypot;
 use App\Filters\AuthFilter;
-use App\Filters\AdminFilter;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
