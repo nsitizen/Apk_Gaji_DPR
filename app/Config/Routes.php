@@ -23,6 +23,8 @@ $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
 
     $routes->get('komponengaji', 'Admin\KomponenGajiController::index');
     $routes->get('komponengaji/(:num)', 'Admin\KomponenGajiController::show/$1');
+    $routes->get('komponengaji/new', 'Admin\KomponenGajiController::new');
+    $routes->post('komponengaji/create', 'Admin\KomponenGajiController::create');
 });
 
 $routes->group('public', ['filter' => 'auth:Public'], function ($routes) {
