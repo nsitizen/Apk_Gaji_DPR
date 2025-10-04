@@ -69,4 +69,34 @@ class AnggotaController extends BaseController
         $this->anggotaModel->insert($this->request->getPost());
         return redirect()->to('/admin/anggota')->with('success', 'Data anggota berhasil ditambahkan.');
     }
+
+    // Menampilkan form edit data (UPDATE)
+    public function edit($id)
+    {
+        $data = [
+            'title'   => 'Form Ubah Data Anggota',
+            'anggota' => $this->anggotaModel->find($id)
+        ];
+        return view('admin/anggota/edit', $data);
+    }
+    
+    // Memproses data dari form ubah
+    public function update($id)
+    {
+        // Validasi sama seperti create
+        $rules = [
+            'nama_depan' => 'required|alpha_space',
+            'nama_belakang' => 'required|alpha_space',
+            'jabatan' => 'required',
+            'status_pernikahan' => 'required',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Update data di database
+        $this->anggotaModel->update($id, $this->request->getPost());
+        return redirect()->to('/admin/anggota')->with('success', 'Data anggota berhasil diubah.');
+    }
 }
