@@ -30,6 +30,8 @@ $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
     $routes->get('komponengaji/delete/(:num)', 'Admin\KomponenGajiController::delete/$1');
 
     $routes->get('penggajian', 'Admin\PenggajianController::index');
+    $routes->get('penggajian/new', 'Admin\PenggajianController::new');
+    $routes->post('penggajian/create', 'Admin\PenggajianController::create');
     $routes->get('penggajian/edit/(:num)', 'Admin\PenggajianController::edit/$1');
     $routes->post('penggajian/update/(:num)', 'Admin\PenggajianController::update/$1');
     $routes->get('penggajian/delete/(:num)', 'Admin\PenggajianController::delete/$1');

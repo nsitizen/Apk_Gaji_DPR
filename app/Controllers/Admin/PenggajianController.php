@@ -52,6 +52,30 @@ class PenggajianController extends BaseController
         return view('admin/penggajian/show', $data);
     }
 
+    // Menampilkan form BUAT penggajian
+    public function new()
+    {
+        $data = [
+            'title'         => 'Form Buat Penggajian Anggota',
+            'anggota'       => $this->anggotaModel->findAll(),
+            'komponen_gaji' => $this->komponenGajiModel->orderBy('jabatan', 'ASC')->findAll()
+        ];
+        return view('admin/penggajian/new', $data);
+    }
+
+    // Memproses form BUAT penggajian
+    public function create()
+    {
+        $id_anggota = $this->request->getPost('id_anggota');
+        $komponen_ids = $this->request->getPost('komponen_ids') ?? [];
+
+        // Hapus dulu data lama untuk anggota ini, lalu tambahkan yang baru
+        $this->penggajianModel->deleteByAnggota($id_anggota);
+        $this->penggajianModel->addKomponenToAnggota($id_anggota, $komponen_ids);
+
+        return redirect()->to('/admin/penggajian')->with('success', 'Data penggajian berhasil dibuat/diperbarui.');
+    }
+
     // Menampilkan form UBAH penggajian
     public function edit($id_anggota)
     {
