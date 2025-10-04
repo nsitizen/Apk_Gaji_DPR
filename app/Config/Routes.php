@@ -28,10 +28,15 @@ $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
     $routes->get('komponengaji/edit/(:num)', 'Admin\KomponenGajiController::edit/$1');
     $routes->post('komponengaji/update/(:num)', 'Admin\KomponenGajiController::update/$1');
     $routes->get('komponengaji/delete/(:num)', 'Admin\KomponenGajiController::delete/$1');
+
+    $routes->get('penggajian', 'Admin\PenggajianController::index');
+    $routes->get('penggajian/(:num)', 'Admin\PenggajianController::show/$1');
 });
 
 $routes->group('public', ['filter' => 'auth:Public'], function ($routes) {
     $routes->get('dashboard', 'Public\Dashboard::index');
     $routes->get('anggota', 'Public\AnggotaController::index');
     $routes->get('anggota/(:num)', 'Public\AnggotaController::show/$1');
+    $routes->get('penggajian', 'Public\PenggajianController::index');
+    $routes->get('penggajian/(:num)', 'Public\PenggajianController::show/$1');
 });
