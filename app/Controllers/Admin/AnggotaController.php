@@ -38,4 +38,35 @@ class AnggotaController extends BaseController
         }
         return view('admin/anggota/show', $data);
     }
+
+    // Menampilkan form tambah data (CREATE)
+    public function new()
+    {
+        $data = [
+            'title' => 'Form Tambah Data Anggota'
+        ];
+        return view('admin/anggota/new', $data);
+    }
+
+    // Memproses data dari form tambah
+    public function create()
+    {
+        // Aturan validasi input
+        $rules = [
+            'id_anggota'      => 'required|is_unique[anggota.id_anggota]',
+            'nama_depan' => 'required|alpha_space',
+            'nama_belakang' => 'required|alpha_space',
+            'jabatan' => 'required',
+            'status_pernikahan' => 'required',
+        ];
+
+        if (!$this->validate($rules)) {
+            // Jika validasi gagal, kembali ke form dengan pesan error
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Simpan data ke database
+        $this->anggotaModel->insert($this->request->getPost());
+        return redirect()->to('/admin/anggota')->with('success', 'Data anggota berhasil ditambahkan.');
+    }
 }

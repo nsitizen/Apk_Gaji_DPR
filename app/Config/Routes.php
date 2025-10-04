@@ -15,6 +15,8 @@ $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
     $routes->get('dashboard', 'Admin\Dashboard::index');
     $routes->get('anggota', 'Admin\AnggotaController::index');
     $routes->get('anggota/(:num)', 'Admin\AnggotaController::show/$1');
+    $routes->get('anggota/new', 'Admin\AnggotaController::new');
+    $routes->post('anggota/create', 'Admin\AnggotaController::create');
 });
 
 $routes->group('public', ['filter' => 'auth:Public'], function ($routes) {
