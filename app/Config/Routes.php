@@ -27,6 +27,7 @@ $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
     $routes->post('komponengaji/create', 'Admin\KomponenGajiController::create');
     $routes->get('komponengaji/edit/(:num)', 'Admin\KomponenGajiController::edit/$1');
     $routes->post('komponengaji/update/(:num)', 'Admin\KomponenGajiController::update/$1');
+    $routes->get('komponengaji/delete/(:num)', 'Admin\KomponenGajiController::delete/$1');
 });
 
 $routes->group('public', ['filter' => 'auth:Public'], function ($routes) {

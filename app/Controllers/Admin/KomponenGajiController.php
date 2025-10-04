@@ -90,4 +90,11 @@ class KomponenGajiController extends BaseController
         $this->komponenGajiModel->update($id, $this->request->getPost());
         return redirect()->to('/admin/komponengaji')->with('success', 'Komponen gaji berhasil diubah.');
     }
+
+    // Memproses HAPUS data
+    public function delete($id)
+    {
+        $this->komponenGajiModel->delete($id);
+        return redirect()->to('/admin/komponengaji')->with('success', 'Komponen gaji berhasil dihapus.');
+    }
 }
