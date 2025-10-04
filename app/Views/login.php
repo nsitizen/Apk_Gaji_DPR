@@ -1,8 +1,9 @@
-<?= view('templates/header') ?>
+<?= $this->extend('templates/main') ?>
 
-<div class="mt-5 row justify-content-center mt-5">
+<?= $this->section('content') ?>
+<div class="row justify-content-center mt-5">
     <div class="col-md-5">
-        <div class="card">
+        <div class="card shadow-sm">
             <div class="card-header text-center">
                 <h3>Login</h3>
             </div>
@@ -31,5 +32,4 @@
         </div>
     </div>
 </div>
-
-<?= view('templates/footer') ?>
+<?= $this->endSection() ?>

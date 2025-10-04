@@ -79,6 +79,11 @@
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <label for="jumlah_anak" class="form-label">Jumlah Anak</label>
+                    <input type="number" class="form-control" id="jumlah_anak" name="jumlah_anak" value="<?= esc($anggota['jumlah_anak']) ?>" required>
+                </div>
+
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">Update Data</button>
                     <a href="<?= site_url('admin/anggota') ?>" class="btn btn-secondary">Batal</a>

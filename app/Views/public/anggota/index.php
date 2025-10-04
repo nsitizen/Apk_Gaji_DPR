@@ -4,8 +4,8 @@
 <div class="container">
     <h2><?= esc($title) ?></h2>
     <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
                 <tr>
                     <th>Nama Lengkap</th>
                     <th>Jabatan</th>
@@ -19,7 +19,6 @@
                     <td><?= esc($item['jabatan']) ?></td>
                     <td>
                         <a href="<?= site_url('public/anggota/' . $item['id_anggota']) ?>" class="btn btn-info btn-sm">Detail</a>
-                    </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

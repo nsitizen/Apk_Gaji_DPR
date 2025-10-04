@@ -12,6 +12,7 @@
                 <li class="list-group-item"><strong>ID Anggota:</strong> <?= esc($anggota['id_anggota']) ?></li>
                 <li class="list-group-item"><strong>Jabatan:</strong> <?= esc($anggota['jabatan']) ?></li>
                 <li class="list-group-item"><strong>Status Pernikahan:</strong> <?= esc($anggota['status_pernikahan']) ?></li>
+                <li class="list-group-item"><strong>Jumlah Anak:</strong> <?= esc($anggota['jumlah_anak']) ?></li>
             </ul>
         </div>
         <div class="card-footer">

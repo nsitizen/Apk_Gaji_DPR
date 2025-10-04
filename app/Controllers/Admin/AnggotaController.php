@@ -58,6 +58,7 @@ class AnggotaController extends BaseController
             'nama_belakang' => 'required|alpha_space',
             'jabatan' => 'required',
             'status_pernikahan' => 'required',
+            'jumlah_anak' => 'required'
         ];
 
         if (!$this->validate($rules)) {

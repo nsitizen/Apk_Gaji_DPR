@@ -1,4 +1,5 @@
-</div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app.js"></script>
-</body>
-</html>
+<footer class="bg-primary text-center text-white py-3 mt-auto">
+    <div class="container">
+        <p class="mb-0">Copyright &copy; <?= date('Y') ?> by Siti Soviyyah | Politeknik Negeri Bandung</p>
+    </div>
+</footer>
