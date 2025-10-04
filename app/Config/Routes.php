@@ -20,6 +20,9 @@ $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
     $routes->get('anggota/edit/(:num)', 'Admin\AnggotaController::edit/$1');
     $routes->post('anggota/update/(:num)', 'Admin\AnggotaController::update/$1');
     $routes->get('anggota/delete/(:num)', 'Admin\AnggotaController::delete/$1');
+
+    $routes->get('komponengaji', 'Admin\KomponenGajiController::index');
+    $routes->get('komponengaji/(:num)', 'Admin\KomponenGajiController::show/$1');
 });
 
 $routes->group('public', ['filter' => 'auth:Public'], function ($routes) {

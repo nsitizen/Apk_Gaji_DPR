@@ -24,6 +24,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= site_url('admin/anggota') ?>">Kelola Anggota</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= site_url('admin/komponengaji') ?>">Kelola Komponen Gaji</a>
+                            </li>
                         <?php elseif (session()->get('role') == 'Public'): ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= site_url('public/dashboard') ?>">Dashboard</a>
