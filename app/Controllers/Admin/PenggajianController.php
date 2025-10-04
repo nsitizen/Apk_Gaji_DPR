@@ -84,6 +84,13 @@ class PenggajianController extends BaseController
         return redirect()->to('/admin/penggajian')->with('success', 'Data penggajian berhasil diubah.');
     }
 
+    // HAPUS data penggajian
+    public function delete($id_anggota)
+    {
+        $this->penggajianModel->deleteByAnggota($id_anggota);
+        return redirect()->to('/admin/penggajian')->with('success', 'Data penggajian berhasil dihapus.');
+    }
+
     // Method private untuk menghitung Take Home Pay berdasarkan semua aturan
     private function calculateTakeHomePay(array $anggota, array $komponen): float
     {
