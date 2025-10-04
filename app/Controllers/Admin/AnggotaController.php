@@ -99,4 +99,11 @@ class AnggotaController extends BaseController
         $this->anggotaModel->update($id, $this->request->getPost());
         return redirect()->to('/admin/anggota')->with('success', 'Data anggota berhasil diubah.');
     }
+
+    // Menghapus data (DELETE)
+    public function delete($id)
+    {
+        $this->anggotaModel->delete($id);
+        return redirect()->to('/admin/anggota')->with('success', 'Data anggota berhasil dihapus.');
+    }
 }
