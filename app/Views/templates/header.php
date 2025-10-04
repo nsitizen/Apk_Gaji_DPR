@@ -17,6 +17,21 @@
                             <a class="nav-link" href="<?= site_url('logout') ?>">Logout</a>
                         </li>
                     <?php endif; ?>
+                    <?php if (session()->get('role') == 'Admin'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= site_url('admin/dashboard') ?>">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= site_url('admin/anggota') ?>">Kelola Anggota</a>
+                            </li>
+                        <?php elseif (session()->get('role') == 'Public'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= site_url('public/dashboard') ?>">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= site_url('public/anggota') ?>">Lihat Anggota</a>
+                            </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

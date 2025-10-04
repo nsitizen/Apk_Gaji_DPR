@@ -13,8 +13,12 @@ $routes->get('/logout', 'AuthController::logout');
 
 $routes->group('admin', ['filter' => 'auth:Admin'], function ($routes) {
     $routes->get('dashboard', 'Admin\Dashboard::index');
+    $routes->get('anggota', 'Admin\AnggotaController::index');
+    $routes->get('anggota/(:num)', 'Admin\AnggotaController::show/$1');
 });
 
 $routes->group('public', ['filter' => 'auth:Public'], function ($routes) {
     $routes->get('dashboard', 'Public\Dashboard::index');
+    $routes->get('anggota', 'Public\AnggotaController::index');
+    $routes->get('anggota/(:num)', 'Public\AnggotaController::show/$1');
 });
