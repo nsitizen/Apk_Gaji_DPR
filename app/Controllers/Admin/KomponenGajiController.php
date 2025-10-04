@@ -65,4 +65,29 @@ class KomponenGajiController extends BaseController
         $this->komponenGajiModel->insert($this->request->getPost());
         return redirect()->to('/admin/komponengaji')->with('success', 'Komponen gaji berhasil ditambahkan.');
     }
+
+    // Menampilkan form UBAH data
+    public function edit($id)
+    {
+        $data = [
+            'title'    => 'Form Ubah Komponen Gaji',
+            'komponen' => $this->komponenGajiModel->find($id)
+        ];
+        return view('admin/komponengaji/edit', $data);
+    }
+
+    // Memproses form UBAH data
+    public function update($id)
+    {
+        $rules = [
+            'nama_komponen' => 'required',
+            'nominal'       => 'required|numeric'
+        ];
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->komponenGajiModel->update($id, $this->request->getPost());
+        return redirect()->to('/admin/komponengaji')->with('success', 'Komponen gaji berhasil diubah.');
+    }
 }
